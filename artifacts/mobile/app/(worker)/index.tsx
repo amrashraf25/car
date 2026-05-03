@@ -67,13 +67,13 @@ export default function WorkerHomeScreen() {
     },
     greeting: {
       fontSize: 13,
-      fontFamily: "Inter_400Regular",
+      fontFamily: "DMSans_400Regular",
       color: colors.mutedForeground,
       marginBottom: 4,
     },
     name: {
       fontSize: 28,
-      fontFamily: "Inter_700Bold",
+      fontFamily: "DMSans_700Bold",
       color: colors.foreground,
       marginBottom: 16,
     },
@@ -104,12 +104,12 @@ export default function WorkerHomeScreen() {
     statusDot: { width: 8, height: 8, borderRadius: 4, backgroundColor: cfg.color },
     statusText: {
       fontSize: 14,
-      fontFamily: "Inter_600SemiBold",
+      fontFamily: "DMSans_600SemiBold",
       color: cfg.color,
     },
     statusHint: {
       fontSize: 12,
-      fontFamily: "Inter_400Regular",
+      fontFamily: "DMSans_400Regular",
       color: colors.mutedForeground,
     },
     toggleBtn: {
@@ -121,7 +121,7 @@ export default function WorkerHomeScreen() {
     toggleBtnText: {
       color: colors.primaryForeground,
       fontSize: 13,
-      fontFamily: "Inter_600SemiBold",
+      fontFamily: "DMSans_600SemiBold",
     },
     statsRow: {
       flexDirection: "row",
@@ -139,12 +139,12 @@ export default function WorkerHomeScreen() {
     },
     statNum: {
       fontSize: 28,
-      fontFamily: "Inter_700Bold",
+      fontFamily: "DMSans_700Bold",
       color: colors.foreground,
     },
     statLabel: {
       fontSize: 12,
-      fontFamily: "Inter_400Regular",
+      fontFamily: "DMSans_400Regular",
       color: colors.mutedForeground,
       marginTop: 4,
     },
@@ -155,14 +155,14 @@ export default function WorkerHomeScreen() {
     },
     sectionTitle: {
       fontSize: 18,
-      fontFamily: "Inter_700Bold",
+      fontFamily: "DMSans_700Bold",
       color: colors.foreground,
     },
     scroll: { paddingHorizontal: 20, paddingBottom: insets.bottom + 100 },
     empty: { alignItems: "center", paddingVertical: 32 },
     emptyText: {
       fontSize: 14,
-      fontFamily: "Inter_400Regular",
+      fontFamily: "DMSans_400Regular",
       color: colors.mutedForeground,
     },
   });

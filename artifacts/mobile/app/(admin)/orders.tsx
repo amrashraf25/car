@@ -49,7 +49,7 @@ export default function AdminOrders() {
       paddingHorizontal: 20,
       paddingBottom: 12,
     },
-    title: { fontSize: 28, fontFamily: "Inter_700Bold", color: colors.foreground, marginBottom: 16 },
+    title: { fontSize: 28, fontFamily: "DMSans_700Bold", color: colors.foreground, marginBottom: 16 },
     filterScroll: { flexDirection: "row", gap: 8 },
     filterBtn: {
       paddingHorizontal: 14,
@@ -58,7 +58,7 @@ export default function AdminOrders() {
       backgroundColor: colors.muted,
     },
     filterBtnActive: { backgroundColor: colors.primary },
-    filterText: { fontSize: 13, fontFamily: "Inter_500Medium", color: colors.mutedForeground },
+    filterText: { fontSize: 13, fontFamily: "DMSans_500Medium", color: colors.mutedForeground },
     filterTextActive: { color: colors.primaryForeground },
     scroll: { paddingHorizontal: 20, paddingTop: 16, paddingBottom: insets.bottom + 100 },
     loading: { flex: 1, alignItems: "center", justifyContent: "center" },
@@ -78,18 +78,18 @@ export default function AdminOrders() {
       alignItems: "center",
       justifyContent: "center",
     },
-    idText: { fontSize: 12, fontFamily: "Inter_600SemiBold", color: colors.foreground },
+    idText: { fontSize: 12, fontFamily: "DMSans_600SemiBold", color: colors.foreground },
     info: { flex: 1 },
-    pkg: { fontSize: 15, fontFamily: "Inter_600SemiBold", color: colors.foreground },
-    meta: { fontSize: 12, fontFamily: "Inter_400Regular", color: colors.mutedForeground, marginTop: 2 },
+    pkg: { fontSize: 15, fontFamily: "DMSans_600SemiBold", color: colors.foreground },
+    meta: { fontSize: 12, fontFamily: "DMSans_400Regular", color: colors.mutedForeground, marginTop: 2 },
     right: { alignItems: "flex-end", gap: 4 },
-    price: { fontSize: 15, fontFamily: "Inter_700Bold", color: colors.foreground },
+    price: { fontSize: 15, fontFamily: "DMSans_700Bold", color: colors.foreground },
     badge: {
       paddingHorizontal: 8,
       paddingVertical: 2,
       borderRadius: 100,
     },
-    badgeText: { fontSize: 11, fontFamily: "Inter_600SemiBold" },
+    badgeText: { fontSize: 11, fontFamily: "DMSans_600SemiBold" },
   });
 
   return (

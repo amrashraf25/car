@@ -76,7 +76,7 @@ export default function CarsScreen() {
       justifyContent: "space-between",
       alignItems: "center",
     },
-    title: { fontSize: 28, fontFamily: "Inter_700Bold", color: colors.foreground },
+    title: { fontSize: 28, fontFamily: "DMSans_700Bold", color: colors.foreground },
     addBtn: {
       width: 40,
       height: 40,
@@ -99,13 +99,13 @@ export default function CarsScreen() {
     },
     carRow: { flexDirection: "row", justifyContent: "space-between", alignItems: "flex-start" },
     carInfo: { flex: 1 },
-    carName: { fontSize: 20, fontFamily: "Inter_700Bold", color: colors.foreground },
-    carDetail: { fontSize: 13, fontFamily: "Inter_400Regular", color: colors.mutedForeground, marginTop: 4 },
+    carName: { fontSize: 20, fontFamily: "DMSans_700Bold", color: colors.foreground },
+    carDetail: { fontSize: 13, fontFamily: "DMSans_400Regular", color: colors.mutedForeground, marginTop: 4 },
     colorDot: { width: 16, height: 16, borderRadius: 8, marginTop: 8, borderWidth: 1, borderColor: colors.border },
     illustration: { alignItems: "center", marginTop: 16 },
     deleteBtn: { padding: 8 },
     empty: { alignItems: "center", paddingVertical: 48 },
-    emptyText: { fontSize: 16, fontFamily: "Inter_400Regular", color: colors.mutedForeground, marginTop: 12 },
+    emptyText: { fontSize: 16, fontFamily: "DMSans_400Regular", color: colors.mutedForeground, marginTop: 12 },
     modal: { flex: 1, backgroundColor: "rgba(0,0,0,0.5)", justifyContent: "flex-end" },
     sheet: {
       backgroundColor: colors.background,
@@ -114,10 +114,10 @@ export default function CarsScreen() {
       padding: 24,
       paddingBottom: insets.bottom + 24,
     },
-    sheetTitle: { fontSize: 22, fontFamily: "Inter_700Bold", color: colors.foreground, marginBottom: 24 },
+    sheetTitle: { fontSize: 22, fontFamily: "DMSans_700Bold", color: colors.foreground, marginBottom: 24 },
     label: {
       fontSize: 13,
-      fontFamily: "Inter_500Medium",
+      fontFamily: "DMSans_500Medium",
       color: colors.mutedForeground,
       marginBottom: 8,
       textTransform: "uppercase",
@@ -129,7 +129,7 @@ export default function CarsScreen() {
       paddingHorizontal: 16,
       paddingVertical: 14,
       fontSize: 16,
-      fontFamily: "Inter_400Regular",
+      fontFamily: "DMSans_400Regular",
       color: colors.foreground,
       marginBottom: 16,
     },
@@ -143,7 +143,7 @@ export default function CarsScreen() {
       borderColor: "transparent",
     },
     chipActive: { borderColor: colors.primary, backgroundColor: colors.primary },
-    chipText: { fontSize: 13, fontFamily: "Inter_500Medium", color: colors.foreground },
+    chipText: { fontSize: 13, fontFamily: "DMSans_500Medium", color: colors.foreground },
     chipTextActive: { color: colors.primaryForeground },
     colorRow: { flexDirection: "row", gap: 10, marginBottom: 16 },
     colorSwatch: {
@@ -161,7 +161,7 @@ export default function CarsScreen() {
       paddingVertical: 16,
       alignItems: "center",
     },
-    saveBtnText: { color: colors.primaryForeground, fontSize: 16, fontFamily: "Inter_600SemiBold" },
+    saveBtnText: { color: colors.primaryForeground, fontSize: 16, fontFamily: "DMSans_600SemiBold" },
   });
 
   return (
@@ -284,7 +284,7 @@ export default function CarsScreen() {
             </Pressable>
 
             <Pressable onPress={() => setShowModal(false)} style={{ alignItems: "center", marginTop: 16 }}>
-              <Text style={{ color: colors.mutedForeground, fontFamily: "Inter_500Medium" }}>Cancel</Text>
+              <Text style={{ color: colors.mutedForeground, fontFamily: "DMSans_500Medium" }}>Cancel</Text>
             </Pressable>
           </View>
         </View>

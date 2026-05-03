@@ -86,7 +86,7 @@ export default function TrackScreen() {
       alignItems: "center",
       justifyContent: "center",
     },
-    title: { fontSize: 22, fontFamily: "Inter_700Bold", color: colors.foreground },
+    title: { fontSize: 22, fontFamily: "DMSans_700Bold", color: colors.foreground },
     loading: { flex: 1, alignItems: "center", justifyContent: "center" },
     scroll: { paddingHorizontal: 20, paddingBottom: insets.bottom + 32 },
     statusCard: {
@@ -97,14 +97,14 @@ export default function TrackScreen() {
     },
     statusOrderId: {
       fontSize: 12,
-      fontFamily: "Inter_500Medium",
+      fontFamily: "DMSans_500Medium",
       color: "rgba(255,255,255,0.5)",
       marginBottom: 8,
       letterSpacing: 0.5,
     },
     statusMessage: {
       fontSize: 22,
-      fontFamily: "Inter_700Bold",
+      fontFamily: "DMSans_700Bold",
       color: "#FFFFFF",
       marginBottom: 16,
     },
@@ -117,7 +117,7 @@ export default function TrackScreen() {
     },
     statusLabel: {
       fontSize: 14,
-      fontFamily: "Inter_600SemiBold",
+      fontFamily: "DMSans_600SemiBold",
       color: colors.accent,
     },
     etaRow: {
@@ -128,7 +128,7 @@ export default function TrackScreen() {
     },
     etaText: {
       fontSize: 13,
-      fontFamily: "Inter_400Regular",
+      fontFamily: "DMSans_400Regular",
       color: "rgba(255,255,255,0.7)",
     },
     progressBar: {
@@ -156,7 +156,7 @@ export default function TrackScreen() {
     },
     sectionTitle: {
       fontSize: 16,
-      fontFamily: "Inter_700Bold",
+      fontFamily: "DMSans_700Bold",
       color: colors.foreground,
       marginBottom: 16,
     },
@@ -168,19 +168,19 @@ export default function TrackScreen() {
     },
     infoText: {
       fontSize: 14,
-      fontFamily: "Inter_400Regular",
+      fontFamily: "DMSans_400Regular",
       color: colors.foreground,
       flex: 1,
     },
     workerName: {
       fontSize: 18,
-      fontFamily: "Inter_700Bold",
+      fontFamily: "DMSans_700Bold",
       color: colors.foreground,
       marginBottom: 4,
     },
     workerEmail: {
       fontSize: 13,
-      fontFamily: "Inter_400Regular",
+      fontFamily: "DMSans_400Regular",
       color: colors.mutedForeground,
     },
     addonRow: {
@@ -193,12 +193,12 @@ export default function TrackScreen() {
     },
     addonName: {
       fontSize: 14,
-      fontFamily: "Inter_400Regular",
+      fontFamily: "DMSans_400Regular",
       color: colors.foreground,
     },
     addonPrice: {
       fontSize: 14,
-      fontFamily: "Inter_600SemiBold",
+      fontFamily: "DMSans_600SemiBold",
       color: colors.foreground,
     },
     totalRow: {
@@ -208,12 +208,12 @@ export default function TrackScreen() {
     },
     totalLabel: {
       fontSize: 16,
-      fontFamily: "Inter_600SemiBold",
+      fontFamily: "DMSans_600SemiBold",
       color: colors.foreground,
     },
     totalAmount: {
       fontSize: 20,
-      fontFamily: "Inter_700Bold",
+      fontFamily: "DMSans_700Bold",
       color: colors.foreground,
     },
   });
@@ -333,6 +333,28 @@ export default function TrackScreen() {
             <Text style={s.totalAmount}>${order.totalPrice}</Text>
           </View>
         </View>
+
+        {status === "completed" && order.worker?.user && (
+          <Pressable
+            style={{
+              backgroundColor: "#C9A84C",
+              borderRadius: 100,
+              paddingVertical: 17,
+              alignItems: "center",
+              marginHorizontal: 0,
+              marginBottom: 8,
+            }}
+            onPress={() =>
+              router.push(
+                `/(customer)/rate?workerName=${encodeURIComponent(order.worker?.user?.name ?? "Detailer")}` as never,
+              )
+            }
+          >
+            <Text style={{ color: "#FFF", fontSize: 16, fontFamily: "DMSans_600SemiBold" }}>
+              ✦  Rate Your Experience
+            </Text>
+          </Pressable>
+        )}
       </ScrollView>
     </View>
   );

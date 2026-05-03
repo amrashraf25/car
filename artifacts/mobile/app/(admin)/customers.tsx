@@ -25,10 +25,10 @@ export default function AdminCustomers() {
       paddingHorizontal: 20,
       paddingBottom: 16,
     },
-    title: { fontSize: 28, fontFamily: "Inter_700Bold", color: colors.foreground },
+    title: { fontSize: 28, fontFamily: "DMSans_700Bold", color: colors.foreground },
     subtitle: {
       fontSize: 13,
-      fontFamily: "Inter_400Regular",
+      fontFamily: "DMSans_400Regular",
       color: colors.mutedForeground,
       marginTop: 4,
     },
@@ -56,13 +56,13 @@ export default function AdminCustomers() {
       alignItems: "center",
       justifyContent: "center",
     },
-    avatarText: { fontSize: 18, fontFamily: "Inter_700Bold", color: colors.foreground },
+    avatarText: { fontSize: 18, fontFamily: "DMSans_700Bold", color: colors.foreground },
     info: { flex: 1 },
-    name: { fontSize: 16, fontFamily: "Inter_600SemiBold", color: colors.foreground },
-    email: { fontSize: 13, fontFamily: "Inter_400Regular", color: colors.mutedForeground, marginTop: 2 },
-    joinDate: { fontSize: 12, fontFamily: "Inter_400Regular", color: colors.mutedForeground, marginTop: 2 },
+    name: { fontSize: 16, fontFamily: "DMSans_600SemiBold", color: colors.foreground },
+    email: { fontSize: 13, fontFamily: "DMSans_400Regular", color: colors.mutedForeground, marginTop: 2 },
+    joinDate: { fontSize: 12, fontFamily: "DMSans_400Regular", color: colors.mutedForeground, marginTop: 2 },
     empty: { alignItems: "center", paddingVertical: 48 },
-    emptyText: { fontSize: 16, fontFamily: "Inter_400Regular", color: colors.mutedForeground, marginTop: 12 },
+    emptyText: { fontSize: 16, fontFamily: "DMSans_400Regular", color: colors.mutedForeground, marginTop: 12 },
   });
 
   return (

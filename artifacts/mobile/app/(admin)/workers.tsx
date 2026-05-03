@@ -31,7 +31,7 @@ export default function AdminWorkers() {
       paddingHorizontal: 20,
       paddingBottom: 16,
     },
-    title: { fontSize: 28, fontFamily: "Inter_700Bold", color: colors.foreground },
+    title: { fontSize: 28, fontFamily: "DMSans_700Bold", color: colors.foreground },
     loading: { flex: 1, alignItems: "center", justifyContent: "center" },
     scroll: { paddingHorizontal: 20, paddingBottom: insets.bottom + 100 },
     card: {
@@ -56,10 +56,10 @@ export default function AdminWorkers() {
       alignItems: "center",
       justifyContent: "center",
     },
-    avatarText: { color: "#FFF", fontSize: 20, fontFamily: "Inter_700Bold" },
+    avatarText: { color: "#FFF", fontSize: 20, fontFamily: "DMSans_700Bold" },
     info: { flex: 1 },
-    name: { fontSize: 16, fontFamily: "Inter_700Bold", color: colors.foreground },
-    email: { fontSize: 13, fontFamily: "Inter_400Regular", color: colors.mutedForeground, marginTop: 2 },
+    name: { fontSize: 16, fontFamily: "DMSans_700Bold", color: colors.foreground },
+    email: { fontSize: 13, fontFamily: "DMSans_400Regular", color: colors.mutedForeground, marginTop: 2 },
     badge: {
       flexDirection: "row",
       alignItems: "center",
@@ -69,9 +69,9 @@ export default function AdminWorkers() {
       borderRadius: 100,
     },
     dot: { width: 7, height: 7, borderRadius: 3.5 },
-    badgeText: { fontSize: 12, fontFamily: "Inter_600SemiBold" },
+    badgeText: { fontSize: 12, fontFamily: "DMSans_600SemiBold" },
     empty: { alignItems: "center", paddingVertical: 48 },
-    emptyText: { fontSize: 16, fontFamily: "Inter_400Regular", color: colors.mutedForeground, marginTop: 12 },
+    emptyText: { fontSize: 16, fontFamily: "DMSans_400Regular", color: colors.mutedForeground, marginTop: 12 },
   });
 
   return (

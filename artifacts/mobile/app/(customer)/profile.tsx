@@ -41,17 +41,17 @@ export default function ProfileScreen() {
     avatarText: {
       color: colors.primaryForeground,
       fontSize: 32,
-      fontFamily: "Inter_700Bold",
+      fontFamily: "DMSans_700Bold",
     },
     name: {
       fontSize: 24,
-      fontFamily: "Inter_700Bold",
+      fontFamily: "DMSans_700Bold",
       color: colors.foreground,
       marginBottom: 4,
     },
     email: {
       fontSize: 14,
-      fontFamily: "Inter_400Regular",
+      fontFamily: "DMSans_400Regular",
       color: colors.mutedForeground,
       marginBottom: 12,
     },
@@ -63,7 +63,7 @@ export default function ProfileScreen() {
     },
     roleText: {
       fontSize: 13,
-      fontFamily: "Inter_600SemiBold",
+      fontFamily: "DMSans_600SemiBold",
       color: colors.foreground,
       textTransform: "capitalize",
     },
@@ -90,7 +90,7 @@ export default function ProfileScreen() {
     menuText: {
       flex: 1,
       fontSize: 15,
-      fontFamily: "Inter_500Medium",
+      fontFamily: "DMSans_500Medium",
       color: colors.foreground,
     },
     destructiveText: { color: colors.destructive },
@@ -105,7 +105,7 @@ export default function ProfileScreen() {
     logoutText: {
       color: "#FFFFFF",
       fontSize: 16,
-      fontFamily: "Inter_600SemiBold",
+      fontFamily: "DMSans_600SemiBold",
     },
   });
 

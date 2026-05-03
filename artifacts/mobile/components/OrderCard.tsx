@@ -26,10 +26,7 @@ interface OrderCardProps {
   onPress?: () => void;
 }
 
-const STATUS_CONFIG: Record<
-  OrderStatus,
-  { label: string; color: string; bg: string }
-> = {
+const STATUS_CONFIG: Record<OrderStatus, { label: string; color: string; bg: string }> = {
   pending: { label: "Pending", color: "#F59E0B", bg: "#FEF3C7" },
   confirmed: { label: "Confirmed", color: "#3B82F6", bg: "#DBEAFE" },
   en_route: { label: "En Route", color: "#8B5CF6", bg: "#EDE9FE" },
@@ -57,14 +54,16 @@ export function OrderCard({
   const s = StyleSheet.create({
     card: {
       backgroundColor: colors.card,
-      borderRadius: 16,
-      padding: 16,
+      borderRadius: 20,
+      padding: 18,
       marginBottom: 12,
       shadowColor: "#000",
       shadowOffset: { width: 0, height: 2 },
       shadowOpacity: 0.06,
-      shadowRadius: 8,
-      elevation: 2,
+      shadowRadius: 12,
+      elevation: 3,
+      borderWidth: 1,
+      borderColor: colors.border,
     },
     row: {
       flexDirection: "row",
@@ -74,47 +73,34 @@ export function OrderCard({
     },
     orderId: {
       fontSize: 11,
-      fontFamily: "Inter_500Medium",
+      fontFamily: "DMSans_500Medium",
       color: colors.mutedForeground,
-      letterSpacing: 0.5,
+      letterSpacing: 0.8,
     },
     badge: {
       flexDirection: "row",
       alignItems: "center",
-      paddingHorizontal: 8,
-      paddingVertical: 3,
+      paddingHorizontal: 10,
+      paddingVertical: 4,
       borderRadius: 100,
       backgroundColor: cfg.bg,
-      gap: 4,
+      gap: 5,
     },
-    dot: {
-      width: 6,
-      height: 6,
-      borderRadius: 3,
-      backgroundColor: cfg.color,
-    },
-    badgeText: {
-      fontSize: 12,
-      fontFamily: "Inter_600SemiBold",
-      color: cfg.color,
-    },
+    dot: { width: 6, height: 6, borderRadius: 3, backgroundColor: cfg.color },
+    badgeText: { fontSize: 12, fontFamily: "DMSans_600SemiBold", color: cfg.color },
     packageName: {
-      fontSize: 18,
-      fontFamily: "Inter_700Bold",
+      fontSize: 19,
+      fontFamily: "PlayfairDisplay_700Bold",
       color: colors.foreground,
-      marginBottom: 4,
+      marginBottom: 3,
     },
     car: {
       fontSize: 13,
-      fontFamily: "Inter_400Regular",
+      fontFamily: "DMSans_400Regular",
       color: colors.mutedForeground,
       marginBottom: 12,
     },
-    divider: {
-      height: 1,
-      backgroundColor: colors.border,
-      marginBottom: 12,
-    },
+    divider: { height: 1, backgroundColor: colors.border, marginBottom: 12 },
     infoRow: {
       flexDirection: "row",
       alignItems: "center",
@@ -123,7 +109,7 @@ export function OrderCard({
     },
     infoText: {
       fontSize: 13,
-      fontFamily: "Inter_400Regular",
+      fontFamily: "DMSans_400Regular",
       color: colors.mutedForeground,
       flex: 1,
     },
@@ -131,17 +117,17 @@ export function OrderCard({
       flexDirection: "row",
       justifyContent: "space-between",
       alignItems: "center",
-      marginTop: 4,
+      marginTop: 6,
     },
     price: {
-      fontSize: 20,
-      fontFamily: "Inter_700Bold",
+      fontSize: 22,
+      fontFamily: "PlayfairDisplay_700Bold",
       color: colors.foreground,
     },
     arrow: {
-      width: 32,
-      height: 32,
-      borderRadius: 16,
+      width: 34,
+      height: 34,
+      borderRadius: 17,
       backgroundColor: colors.muted,
       alignItems: "center",
       justifyContent: "center",
@@ -151,7 +137,7 @@ export function OrderCard({
   return (
     <Pressable style={s.card} onPress={onPress}>
       <View style={s.row}>
-        <Text style={s.orderId}>Order #{id}</Text>
+        <Text style={s.orderId}>ORDER #{id}</Text>
         <View style={s.badge}>
           <View style={s.dot} />
           <Text style={s.badgeText}>{cfg.label}</Text>

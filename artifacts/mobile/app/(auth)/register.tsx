@@ -64,18 +64,18 @@ export default function RegisterScreen() {
     back: { marginBottom: 24 },
     backText: {
       fontSize: 14,
-      fontFamily: "Inter_500Medium",
+      fontFamily: "DMSans_500Medium",
       color: colors.mutedForeground,
     },
     title: {
       fontSize: 32,
-      fontFamily: "Inter_700Bold",
+      fontFamily: "DMSans_700Bold",
       color: colors.foreground,
       lineHeight: 40,
     },
     subtitle: {
       fontSize: 15,
-      fontFamily: "Inter_400Regular",
+      fontFamily: "DMSans_400Regular",
       color: colors.mutedForeground,
       marginTop: 8,
     },
@@ -99,14 +99,14 @@ export default function RegisterScreen() {
     },
     roleBtnText: {
       fontSize: 14,
-      fontFamily: "Inter_600SemiBold",
+      fontFamily: "DMSans_600SemiBold",
       color: colors.mutedForeground,
     },
     roleBtnTextActive: { color: colors.primaryForeground },
     inputGroup: { marginBottom: 16 },
     label: {
       fontSize: 13,
-      fontFamily: "Inter_500Medium",
+      fontFamily: "DMSans_500Medium",
       color: colors.mutedForeground,
       marginBottom: 8,
       textTransform: "uppercase",
@@ -118,7 +118,7 @@ export default function RegisterScreen() {
       paddingHorizontal: 16,
       paddingVertical: 14,
       fontSize: 16,
-      fontFamily: "Inter_400Regular",
+      fontFamily: "DMSans_400Regular",
       color: colors.foreground,
       borderWidth: 1,
       borderColor: colors.border,
@@ -126,7 +126,7 @@ export default function RegisterScreen() {
     error: {
       color: colors.destructive,
       fontSize: 14,
-      fontFamily: "Inter_400Regular",
+      fontFamily: "DMSans_400Regular",
       marginBottom: 16,
       textAlign: "center",
     },
@@ -140,7 +140,7 @@ export default function RegisterScreen() {
     btnText: {
       color: colors.primaryForeground,
       fontSize: 16,
-      fontFamily: "Inter_600SemiBold",
+      fontFamily: "DMSans_600SemiBold",
     },
     loginRow: {
       flexDirection: "row",
@@ -149,12 +149,12 @@ export default function RegisterScreen() {
     },
     loginText: {
       fontSize: 14,
-      fontFamily: "Inter_400Regular",
+      fontFamily: "DMSans_400Regular",
       color: colors.mutedForeground,
     },
     loginLink: {
       fontSize: 14,
-      fontFamily: "Inter_600SemiBold",
+      fontFamily: "DMSans_600SemiBold",
       color: colors.primary,
     },
   });

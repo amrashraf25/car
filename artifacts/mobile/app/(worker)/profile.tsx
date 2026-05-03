@@ -28,11 +28,11 @@ export default function WorkerProfile() {
       justifyContent: "center",
       marginBottom: 16,
     },
-    avatarText: { color: "#FFF", fontSize: 32, fontFamily: "Inter_700Bold" },
-    name: { fontSize: 24, fontFamily: "Inter_700Bold", color: colors.foreground, marginBottom: 4 },
-    email: { fontSize: 14, fontFamily: "Inter_400Regular", color: colors.mutedForeground, marginBottom: 12 },
+    avatarText: { color: "#FFF", fontSize: 32, fontFamily: "DMSans_700Bold" },
+    name: { fontSize: 24, fontFamily: "DMSans_700Bold", color: colors.foreground, marginBottom: 4 },
+    email: { fontSize: 14, fontFamily: "DMSans_400Regular", color: colors.mutedForeground, marginBottom: 12 },
     badge: { backgroundColor: colors.muted, paddingHorizontal: 14, paddingVertical: 6, borderRadius: 100 },
-    badgeText: { fontSize: 13, fontFamily: "Inter_600SemiBold", color: colors.foreground },
+    badgeText: { fontSize: 13, fontFamily: "DMSans_600SemiBold", color: colors.foreground },
     logoutBtn: {
       marginHorizontal: 20,
       backgroundColor: colors.destructive,
@@ -41,7 +41,7 @@ export default function WorkerProfile() {
       alignItems: "center",
       marginTop: 24,
     },
-    logoutText: { color: "#FFF", fontSize: 16, fontFamily: "Inter_600SemiBold" },
+    logoutText: { color: "#FFF", fontSize: 16, fontFamily: "DMSans_600SemiBold" },
   });
 
   return (

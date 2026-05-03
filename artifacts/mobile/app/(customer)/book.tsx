@@ -19,10 +19,15 @@ import {
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import Svg, {
   Circle,
+  Defs,
   Ellipse,
   G,
+  Line,
+  LinearGradient,
   Path,
   Rect,
+  Stop,
+  Text as SvgText,
 } from "react-native-svg";
 
 import { PackageCard } from "@/components/PackageCard";
@@ -61,58 +66,180 @@ function InteractiveCar({
   onZoneToggle: (zone: string) => void;
   accentColor: string;
 }) {
-  const isSelected = (zone: string) => selectedZones.includes(zone);
-  const fill = (zone: string) =>
-    isSelected(zone) ? `${accentColor}33` : "transparent";
-  const stroke = (zone: string) =>
-    isSelected(zone) ? accentColor : "rgba(0,0,0,0.15)";
+  const sel = (zone: string) => selectedZones.includes(zone);
+  const hl = (zone: string) => sel(zone) ? `${accentColor}44` : "transparent";
+  const st = (zone: string) => sel(zone) ? accentColor : "rgba(255,255,255,0.06)";
+
+  const SPOKE_ANGLES = [0, 72, 144, 216, 288];
+
+  function Spokes({ cx, cy }: { cx: number; cy: number }) {
+    return (
+      <>
+        {SPOKE_ANGLES.map((a, i) => {
+          const rad = (a * Math.PI) / 180;
+          return (
+            <Line
+              key={i}
+              x1={cx + 7 * Math.cos(rad)}
+              y1={cy + 7 * Math.sin(rad)}
+              x2={cx + 13 * Math.cos(rad)}
+              y2={cy + 13 * Math.sin(rad)}
+              stroke="#888"
+              strokeWidth="2"
+            />
+          );
+        })}
+      </>
+    );
+  }
 
   return (
-    <Svg width="280" height="160" viewBox="0 0 280 160">
-      {/* Car body */}
-      <Rect x="30" y="70" width="220" height="60" rx="10" fill="#1A1A1A" />
-      {/* Cabin */}
-      <Path d="M70 80 L85 45 L195 45 L210 80 Z" fill="#2A2A2A" />
+    <Svg width="310" height="148" viewBox="0 0 310 148">
+      <Defs>
+        <LinearGradient id="bodyGrad" x1="0" y1="0" x2="0" y2="1">
+          <Stop offset="0" stopColor="#2A2A2A" stopOpacity="1" />
+          <Stop offset="1" stopColor="#141414" stopOpacity="1" />
+        </LinearGradient>
+      </Defs>
 
-      {/* Windshield - windows zone */}
-      <Pressable onPress={() => onZoneToggle("windows")}>
-        <Path d="M80 78 L92 50 L130 50 L130 78 Z" fill={fill("windows")} stroke={stroke("windows")} strokeWidth="1.5" />
-        <Path d="M150 78 L150 50 L188 50 L200 78 Z" fill={fill("windows")} stroke={stroke("windows")} strokeWidth="1.5" />
-        <Rect x="130" y="50" width="20" height="28" fill={fill("windows")} stroke={stroke("windows")} strokeWidth="1.5" />
-      </Pressable>
+      {/* Ground shadow */}
+      <Ellipse cx="155" cy="138" rx="128" ry="9" fill="rgba(0,0,0,0.22)" />
 
-      {/* Hood zone */}
+      {/* === BASE CAR === */}
+      {/* Lower body */}
+      <Path
+        d="M20 104 Q20 88 30 86 L60 86 Q72 66 92 50 Q110 38 130 36 L182 36 Q202 36 218 48 Q232 58 242 76 L268 80 Q280 82 282 92 L282 104 Q260 102 240 100 Q220 120 185 122 L125 122 Q90 120 68 100 Q44 102 20 104 Z"
+        fill="url(#bodyGrad)"
+        stroke="#333"
+        strokeWidth="0.5"
+      />
+
+      {/* Cabin glass house */}
+      <Path
+        d="M68 84 Q80 60 98 46 L128 38 L184 38 Q204 38 218 52 Q228 64 232 80 L232 84 Z"
+        fill="#222"
+      />
+
+      {/* Windshield (front/right) */}
+      <Path
+        d="M190 80 L192 40 Q200 38 214 50 L228 72 L228 80 Z"
+        fill="rgba(140,180,220,0.32)"
+        stroke="rgba(255,255,255,0.06)"
+        strokeWidth="0.5"
+      />
+
+      {/* Center window */}
+      <Rect x="136" y="40" width="52" height="40" rx="1"
+        fill="rgba(140,180,220,0.28)"
+        stroke="rgba(255,255,255,0.05)"
+        strokeWidth="0.5"
+      />
+
+      {/* Rear window (left side) */}
+      <Path
+        d="M78 80 L78 44 Q90 38 102 40 L132 40 L132 80 Z"
+        fill="rgba(140,180,220,0.24)"
+        stroke="rgba(255,255,255,0.05)"
+        strokeWidth="0.5"
+      />
+
+      {/* Door seam */}
+      <Line x1="136" y1="80" x2="136" y2="110" stroke="rgba(255,255,255,0.07)" strokeWidth="1" />
+
+      {/* Body highlight */}
+      <Path
+        d="M42 86 Q100 76 155 74 Q210 74 262 80"
+        stroke="rgba(255,255,255,0.07)"
+        strokeWidth="2"
+        fill="none"
+      />
+
+      {/* Front wheel */}
+      <Ellipse cx="238" cy="116" rx="26" ry="14" fill="#111" />
+      <Circle cx="238" cy="116" r="20" fill="#1E1E1E" />
+      <Circle cx="238" cy="116" r="14" fill="#2A2A2A" />
+      <Circle cx="238" cy="116" r="6" fill="#141414" />
+      <Spokes cx={238} cy={116} />
+
+      {/* Rear wheel */}
+      <Ellipse cx="68" cy="116" rx="26" ry="14" fill="#111" />
+      <Circle cx="68" cy="116" r="20" fill="#1E1E1E" />
+      <Circle cx="68" cy="116" r="14" fill="#2A2A2A" />
+      <Circle cx="68" cy="116" r="6" fill="#141414" />
+      <Spokes cx={68} cy={116} />
+
+      {/* Front DRL (right) */}
+      <Rect x="268" y="84" width="14" height="3" rx="1.5" fill="#FFF9C4" opacity="0.95" />
+      <Rect x="268" y="89" width="12" height="2" rx="1" fill="#FFF" opacity="0.4" />
+
+      {/* Rear taillights (left) */}
+      <Rect x="22" y="84" width="12" height="4" rx="2" fill="#FF2222" opacity="0.9" />
+
+      {/* === PRESSABLE ZONE OVERLAYS === */}
+
+      {/* Hood (front/right) */}
       <Pressable onPress={() => onZoneToggle("hood")}>
-        <Rect x="30" y="70" width="50" height="35" rx="5" fill={fill("hood")} stroke={stroke("hood")} strokeWidth="1.5" />
+        <Path
+          d="M216 84 L264 84 L264 108 Q252 114 238 114 Q222 112 214 100 Z"
+          fill={hl("hood")} stroke={st("hood")} strokeWidth="1.5"
+        />
+        {sel("hood") && (
+          <SvgText x="240" y="100" textAnchor="middle" fontSize="9" fill={accentColor} fontWeight="bold">Hood</SvgText>
+        )}
       </Pressable>
 
-      {/* Trunk zone */}
+      {/* Trunk (rear/left) */}
       <Pressable onPress={() => onZoneToggle("trunk")}>
-        <Rect x="200" y="70" width="50" height="35" rx="5" fill={fill("trunk")} stroke={stroke("trunk")} strokeWidth="1.5" />
+        <Path
+          d="M36 84 L62 84 L70 96 Q60 110 48 112 Q34 110 24 100 L24 90 Z"
+          fill={hl("trunk")} stroke={st("trunk")} strokeWidth="1.5"
+        />
+        {sel("trunk") && (
+          <SvgText x="46" y="98" textAnchor="middle" fontSize="9" fill={accentColor} fontWeight="bold">Trunk</SvgText>
+        )}
       </Pressable>
 
-      {/* Roof zone */}
+      {/* Roof */}
       <Pressable onPress={() => onZoneToggle("roof")}>
-        <Path d="M80 78 L92 50 L188 50 L200 78 Z" fill={fill("roof")} stroke={stroke("roof")} strokeWidth="1.5" />
+        <Rect x="100" y="38" width="100" height="22" rx="4"
+          fill={hl("roof")} stroke={st("roof")} strokeWidth="1.5"
+        />
+        {sel("roof") && (
+          <SvgText x="150" y="53" textAnchor="middle" fontSize="9" fill={accentColor} fontWeight="bold">Roof</SvgText>
+        )}
       </Pressable>
 
-      {/* Interior zone */}
+      {/* Interior */}
       <Pressable onPress={() => onZoneToggle("interior")}>
-        <Rect x="100" y="52" width="80" height="26" rx="4" fill={fill("interior")} stroke={stroke("interior")} strokeWidth="1.5" />
+        <Rect x="100" y="62" width="100" height="20" rx="3"
+          fill={hl("interior")} stroke={st("interior")} strokeWidth="1.5"
+        />
+        {sel("interior") && (
+          <SvgText x="150" y="75" textAnchor="middle" fontSize="9" fill={accentColor} fontWeight="bold">Interior</SvgText>
+        )}
       </Pressable>
 
-      {/* Wheels */}
+      {/* Windows */}
+      <Pressable onPress={() => onZoneToggle("windows")}>
+        <Path
+          d="M78 40 L78 80 L190 80 L190 40 Z"
+          fill={hl("windows")} stroke={st("windows")} strokeWidth="1.5"
+        />
+        {sel("windows") && (
+          <SvgText x="134" y="63" textAnchor="middle" fontSize="9" fill={accentColor} fontWeight="bold">Windows</SvgText>
+        )}
+      </Pressable>
+
+      {/* Wheels (both) */}
       <Pressable onPress={() => onZoneToggle("wheels")}>
         <G>
-          <Ellipse cx="75" cy="118" rx="22" ry="18" fill={fill("wheels")} stroke={stroke("wheels")} strokeWidth="1.5" />
-          <Ellipse cx="75" cy="118" rx="12" ry="10" fill="#2A2A2A" />
-          <Ellipse cx="205" cy="118" rx="22" ry="18" fill={fill("wheels")} stroke={stroke("wheels")} strokeWidth="1.5" />
-          <Ellipse cx="205" cy="118" rx="12" ry="10" fill="#2A2A2A" />
+          <Circle cx="238" cy="116" r="20" fill={hl("wheels")} stroke={st("wheels")} strokeWidth="1.5" />
+          <Circle cx="68" cy="116" r="20" fill={hl("wheels")} stroke={st("wheels")} strokeWidth="1.5" />
         </G>
+        {sel("wheels") && (
+          <SvgText x="155" y="138" textAnchor="middle" fontSize="9" fill={accentColor} fontWeight="bold">Wheels</SvgText>
+        )}
       </Pressable>
-
-      {/* Zone labels */}
-      {isSelected("hood") && <Path d="M47 88" />}
     </Svg>
   );
 }
@@ -214,10 +341,10 @@ export default function BookScreen() {
     headerText: { flex: 1 },
     stepLabel: {
       fontSize: 12,
-      fontFamily: "Inter_500Medium",
+      fontFamily: "DMSans_500Medium",
       color: colors.mutedForeground,
     },
-    title: { fontSize: 22, fontFamily: "Inter_700Bold", color: colors.foreground },
+    title: { fontSize: 22, fontFamily: "DMSans_700Bold", color: colors.foreground },
     stepBar: {
       flexDirection: "row",
       gap: 6,
@@ -234,7 +361,7 @@ export default function BookScreen() {
     scroll: { paddingHorizontal: 20, paddingBottom: insets.bottom + 100 },
     label: {
       fontSize: 13,
-      fontFamily: "Inter_500Medium",
+      fontFamily: "DMSans_500Medium",
       color: colors.mutedForeground,
       textTransform: "uppercase",
       letterSpacing: 0.5,
@@ -247,7 +374,7 @@ export default function BookScreen() {
       paddingHorizontal: 16,
       paddingVertical: 14,
       fontSize: 16,
-      fontFamily: "Inter_400Regular",
+      fontFamily: "DMSans_400Regular",
       color: colors.foreground,
       borderWidth: 1,
       borderColor: colors.border,
@@ -262,9 +389,9 @@ export default function BookScreen() {
       borderColor: "transparent",
     },
     timeBtnActive: { borderColor: colors.primary, backgroundColor: "transparent" },
-    timeText: { fontSize: 13, fontFamily: "Inter_500Medium", color: colors.foreground },
+    timeText: { fontSize: 13, fontFamily: "DMSans_500Medium", color: colors.foreground },
     calHeader: { flexDirection: "row", justifyContent: "space-between", alignItems: "center", marginBottom: 12 },
-    calMonth: { fontSize: 16, fontFamily: "Inter_700Bold", color: colors.foreground },
+    calMonth: { fontSize: 16, fontFamily: "DMSans_700Bold", color: colors.foreground },
     calGrid: { flexDirection: "row", flexWrap: "wrap" },
     calDay: {
       width: `${100 / 7}%`,
@@ -272,10 +399,10 @@ export default function BookScreen() {
       alignItems: "center",
       justifyContent: "center",
     },
-    calDayText: { fontSize: 14, fontFamily: "Inter_400Regular", color: colors.foreground },
+    calDayText: { fontSize: 14, fontFamily: "DMSans_400Regular", color: colors.foreground },
     calDayActive: { backgroundColor: colors.primary, borderRadius: 20 },
-    calDayActiveText: { color: "#FFF", fontFamily: "Inter_600SemiBold" },
-    calDayHeader: { fontSize: 11, fontFamily: "Inter_600SemiBold", color: colors.mutedForeground },
+    calDayActiveText: { color: "#FFF", fontFamily: "DMSans_600SemiBold" },
+    calDayHeader: { fontSize: 11, fontFamily: "DMSans_600SemiBold", color: colors.mutedForeground },
     carRow: { flexDirection: "row", gap: 10 },
     carBtn: {
       flex: 1,
@@ -286,12 +413,12 @@ export default function BookScreen() {
       backgroundColor: colors.card,
     },
     carBtnActive: { borderColor: colors.primary },
-    carBtnText: { fontSize: 14, fontFamily: "Inter_600SemiBold", color: colors.foreground },
-    carBtnSub: { fontSize: 12, fontFamily: "Inter_400Regular", color: colors.mutedForeground, marginTop: 2 },
+    carBtnText: { fontSize: 14, fontFamily: "DMSans_600SemiBold", color: colors.foreground },
+    carBtnSub: { fontSize: 12, fontFamily: "DMSans_400Regular", color: colors.mutedForeground, marginTop: 2 },
     carSvgArea: { alignItems: "center", marginVertical: 16 },
     addonHint: {
       fontSize: 13,
-      fontFamily: "Inter_400Regular",
+      fontFamily: "DMSans_400Regular",
       color: colors.mutedForeground,
       marginBottom: 12,
       textAlign: "center",
@@ -308,17 +435,17 @@ export default function BookScreen() {
       gap: 10,
     },
     addonItemActive: { borderColor: colors.accent },
-    addonName: { flex: 1, fontSize: 14, fontFamily: "Inter_500Medium", color: colors.foreground },
-    addonPrice: { fontSize: 14, fontFamily: "Inter_700Bold", color: colors.foreground },
+    addonName: { flex: 1, fontSize: 14, fontFamily: "DMSans_500Medium", color: colors.foreground },
+    addonPrice: { fontSize: 14, fontFamily: "DMSans_700Bold", color: colors.foreground },
     summarySection: { backgroundColor: colors.card, borderRadius: 20, padding: 20, marginBottom: 16 },
-    summaryTitle: { fontSize: 16, fontFamily: "Inter_700Bold", color: colors.foreground, marginBottom: 12 },
+    summaryTitle: { fontSize: 16, fontFamily: "DMSans_700Bold", color: colors.foreground, marginBottom: 12 },
     summaryRow: { flexDirection: "row", justifyContent: "space-between", marginBottom: 8 },
-    summaryKey: { fontSize: 14, fontFamily: "Inter_400Regular", color: colors.mutedForeground },
-    summaryVal: { fontSize: 14, fontFamily: "Inter_500Medium", color: colors.foreground, flex: 1, textAlign: "right" },
+    summaryKey: { fontSize: 14, fontFamily: "DMSans_400Regular", color: colors.mutedForeground },
+    summaryVal: { fontSize: 14, fontFamily: "DMSans_500Medium", color: colors.foreground, flex: 1, textAlign: "right" },
     divider: { height: 1, backgroundColor: colors.border, marginVertical: 10 },
     totalRow: { flexDirection: "row", justifyContent: "space-between", alignItems: "center" },
-    totalLabel: { fontSize: 16, fontFamily: "Inter_700Bold", color: colors.foreground },
-    totalAmount: { fontSize: 28, fontFamily: "Inter_700Bold", color: colors.foreground },
+    totalLabel: { fontSize: 16, fontFamily: "DMSans_700Bold", color: colors.foreground },
+    totalAmount: { fontSize: 28, fontFamily: "DMSans_700Bold", color: colors.foreground },
     nextBtn: {
       backgroundColor: colors.primary,
       borderRadius: 100,
@@ -326,7 +453,7 @@ export default function BookScreen() {
       alignItems: "center",
       marginTop: 16,
     },
-    nextBtnText: { color: colors.primaryForeground, fontSize: 16, fontFamily: "Inter_600SemiBold" },
+    nextBtnText: { color: colors.primaryForeground, fontSize: 16, fontFamily: "DMSans_600SemiBold" },
   });
 
   const DAYS = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];

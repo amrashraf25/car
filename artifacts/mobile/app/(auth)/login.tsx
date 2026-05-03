@@ -70,20 +70,20 @@ export default function LoginScreen() {
     badgeText: {
       color: colors.primaryForeground,
       fontSize: 11,
-      fontFamily: "Inter_600SemiBold",
+      fontFamily: "DMSans_600SemiBold",
       letterSpacing: 1.5,
       textTransform: "uppercase",
     },
     title: {
       fontSize: 36,
-      fontFamily: "Inter_700Bold",
+      fontFamily: "DMSans_700Bold",
       color: colors.foreground,
       lineHeight: 44,
       marginBottom: 8,
     },
     subtitle: {
       fontSize: 15,
-      fontFamily: "Inter_400Regular",
+      fontFamily: "DMSans_400Regular",
       color: colors.mutedForeground,
     },
     demoBox: {
@@ -94,7 +94,7 @@ export default function LoginScreen() {
     },
     demoTitle: {
       fontSize: 12,
-      fontFamily: "Inter_600SemiBold",
+      fontFamily: "DMSans_600SemiBold",
       color: colors.mutedForeground,
       textTransform: "uppercase",
       letterSpacing: 1,
@@ -107,12 +107,12 @@ export default function LoginScreen() {
     },
     demoLabel: {
       fontSize: 13,
-      fontFamily: "Inter_500Medium",
+      fontFamily: "DMSans_500Medium",
       color: colors.foreground,
     },
     demoValue: {
       fontSize: 13,
-      fontFamily: "Inter_400Regular",
+      fontFamily: "DMSans_400Regular",
       color: colors.mutedForeground,
     },
     inputGroup: {
@@ -120,7 +120,7 @@ export default function LoginScreen() {
     },
     label: {
       fontSize: 13,
-      fontFamily: "Inter_500Medium",
+      fontFamily: "DMSans_500Medium",
       color: colors.mutedForeground,
       marginBottom: 8,
       textTransform: "uppercase",
@@ -132,7 +132,7 @@ export default function LoginScreen() {
       paddingHorizontal: 16,
       paddingVertical: 14,
       fontSize: 16,
-      fontFamily: "Inter_400Regular",
+      fontFamily: "DMSans_400Regular",
       color: colors.foreground,
       borderWidth: 1,
       borderColor: colors.border,
@@ -140,7 +140,7 @@ export default function LoginScreen() {
     error: {
       color: colors.destructive,
       fontSize: 14,
-      fontFamily: "Inter_400Regular",
+      fontFamily: "DMSans_400Regular",
       marginBottom: 16,
       textAlign: "center",
     },
@@ -154,7 +154,7 @@ export default function LoginScreen() {
     loginButtonText: {
       color: colors.primaryForeground,
       fontSize: 16,
-      fontFamily: "Inter_600SemiBold",
+      fontFamily: "DMSans_600SemiBold",
     },
     registerRow: {
       flexDirection: "row",
@@ -163,12 +163,12 @@ export default function LoginScreen() {
     },
     registerText: {
       fontSize: 14,
-      fontFamily: "Inter_400Regular",
+      fontFamily: "DMSans_400Regular",
       color: colors.mutedForeground,
     },
     registerLink: {
       fontSize: 14,
-      fontFamily: "Inter_600SemiBold",
+      fontFamily: "DMSans_600SemiBold",
       color: colors.primary,
     },
   });

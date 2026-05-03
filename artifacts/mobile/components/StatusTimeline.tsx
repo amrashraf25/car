@@ -55,7 +55,7 @@ export function StatusTimeline({ status }: StatusTimelineProps) {
     },
     label: {
       fontSize: 14,
-      fontFamily: "Inter_500Medium",
+      fontFamily: "DMSans_500Medium",
     },
   });
 
@@ -96,8 +96,8 @@ export function StatusTimeline({ status }: StatusTimelineProps) {
                           : colors.foreground
                         : colors.mutedForeground,
                       fontFamily: isCurrent
-                        ? "Inter_600SemiBold"
-                        : "Inter_400Regular",
+                        ? "DMSans_600SemiBold"
+                        : "DMSans_400Regular",
                     },
                   ]}
                 >

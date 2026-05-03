@@ -27,13 +27,13 @@ export default function OrdersScreen() {
       paddingHorizontal: 20,
       paddingBottom: 16,
     },
-    title: { fontSize: 28, fontFamily: "Inter_700Bold", color: colors.foreground },
+    title: { fontSize: 28, fontFamily: "DMSans_700Bold", color: colors.foreground },
     scroll: { paddingHorizontal: 20, paddingBottom: insets.bottom + 100 },
     loading: { flex: 1, alignItems: "center", justifyContent: "center" },
     empty: { alignItems: "center", paddingVertical: 48 },
     emptyText: {
       fontSize: 16,
-      fontFamily: "Inter_400Regular",
+      fontFamily: "DMSans_400Regular",
       color: colors.mutedForeground,
     },
   });
