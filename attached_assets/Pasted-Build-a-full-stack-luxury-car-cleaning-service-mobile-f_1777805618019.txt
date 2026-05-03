@@ -1,0 +1,233 @@
+Build a full-stack luxury car cleaning service mobile-first web application with the following complete specification. The design must feel premium, minimal, and high-end — inspired by luxury automotive apps like Volvo's connected car UI. Use a white/off-white background, clean sans-serif typography (Inter or Geist), soft shadows, rounded cards, green accents for status indicators, and smooth micro-animations throughout.
+
+---
+
+## TECH STACK
+- Frontend: React + TypeScript + Tailwind CSS + Framer Motion
+- Backend: Node.js + Express
+- Database: SQLite with better-sqlite3 (or lowdb for simplicity)
+- Real-time: Socket.IO for live tracking
+- Maps: Leaflet.js with OpenStreetMap (free, no API key)
+- State: Zustand
+- Routing: React Router v6
+- Icons: Lucide React
+- Notifications: react-hot-toast
+
+---
+
+## USER ROLES
+1. Customer
+2. Worker
+3. Admin
+
+---
+
+## AUTHENTICATION
+- Login / Register pages for all roles
+- Role-based routing (customer goes to customer dashboard, worker to worker dashboard, admin to admin panel)
+- Use JWT stored in localStorage
+- Demo accounts pre-seeded:
+  - customer@demo.com / password123
+  - worker@demo.com / password123
+  - admin@demo.com / password123
+
+---
+
+## CUSTOMER FLOW
+
+### 1. Home Dashboard (after login)
+- Header: greeting + avatar + notification bell
+- Car summary card showing: car name, color, plate number, a top-down SVG illustration of the car
+- Quick action buttons: Book Cleaning, Track Order, My Cars, History
+- Recent orders list with status badges
+
+### 2. My Car Profile Setup
+- Customer fills in:
+  - Car brand & model (dropdown: Toyota, BMW, Mercedes, Volvo, Audi, etc.)
+  - Car color (color picker with swatches: black, white, silver, red, blue, etc.)
+  - License plate number (text input)
+  - Car type: Sedan, SUV, Truck, Hatchback
+- This generates a top-down SVG car silhouette in the chosen color
+
+### 3. Book a Cleaning — Step-by-step wizard
+
+**Step 1: Choose Date & Time**
+- Calendar date picker (can book today or any future date)
+- Time slot selector (morning, afternoon, evening slots)
+- Address input with map pin drop using Leaflet (customer pins their location on map)
+
+**Step 2: Choose Package**
+Display 3 luxury package cards with pricing:
+
+- 🥉 Basic Wash — $25
+  Exterior hand wash, wheel clean, window clean
+
+- 🥈 Full Detail — $65
+  Everything in Basic + interior vacuum, dashboard wipe, seat wipe, floor mats
+
+- 🥇 Premium Platinum — $120
+  Everything in Full Detail + engine bay clean, ceramic wax polish, odor treatment, leather conditioning
+
+**Step 3: Custom Add-ons — Interactive Car Simulator**
+
+Show a top-down SVG car illustration (like the reference image). The car has clickable zones:
+
+- Tap the car ROOF → opens overlay: "Roof Polish / Roof Lining Clean"
+- Tap the HOOD → "Engine Bay Clean / Hood Polish"
+- Tap LEFT DOOR → opens a side-view panel showing interior: seats, dashboard, footwell
+  - Inside the door panel, customer can tap:
+    - Dashboard → add "Dashboard Polish"
+    - Front Seats → add "Seat Shampooing"
+    - Rear Seats → add "Rear Seat Clean"
+    - Front Footwell → add "Front Floor Mat Clean"
+    - Rear Footwell → add "Rear Floor Mat Clean"
+    - Door panels → add "Door Panel Wipe"
+- Tap RIGHT DOOR → same interior view
+- Tap TRUNK → "Trunk Vacuum / Trunk Liner Clean"
+- Tap WHEELS (all 4 corners) → "Wheel & Tire Polish"
+- Tap WINDOWS → "Window Tint Clean / Window Polish"
+
+Each zone, when selected, highlights in a soft green glow. Selected add-ons appear in a sidebar list with prices ($5–$20 each). Running total updates live.
+
+**Step 4: Order Summary & Confirm**
+- Summary of: date, time, location, package, add-ons, total price
+- "Confirm Booking" button → creates order in DB, assigns available worker
+
+### 4. Live Order Tracking Screen
+- Full-screen Leaflet map
+- Worker's location shown as animated moving marker (car icon)
+- Customer location shown as pin
+- Status timeline at bottom:
+  - ✅ Order Confirmed
+  - 🚗 Worker En Route (live ETA countdown)
+  - 🧹 Cleaning In Progress (timer showing elapsed time)
+  - ✨ Finishing Up
+  - ✅ Complete
+- ETA displayed: "Worker arrives in ~12 min"
+- When cleaning is in progress: progress bar showing % complete
+- Push notification simulation when worker starts moving and when done
+
+---
+
+## WORKER DASHBOARD
+
+### Worker Home
+- Status toggle: Available / Busy / Offline (large toggle, changes their availability)
+- Today's assigned jobs list — each card shows:
+  - Customer name
+  - Car: color + plate
+  - Service package + add-ons
+  - Location with "Navigate" button (opens map)
+  - Scheduled time
+  - Status buttons: "Start Journey" → "Start Cleaning" → "Mark Complete"
+
+### Job Detail Screen
+- Full order breakdown
+- Customer location on Leaflet map
+- Checklist of all services to perform (each add-on/package item is a checkbox)
+- Timer that starts when "Start Cleaning" is tapped
+- "Mark Complete" button — sends real-time update to customer
+
+### Worker Location Sharing
+- When worker taps "Start Journey", their browser geolocation is captured and emitted via Socket.IO every 5 seconds to the customer's tracking screen
+- Simulate movement if geolocation not available (animate marker along a path toward customer)
+
+---
+
+## ADMIN DASHBOARD
+
+### Overview Panel
+- Stats cards: Total orders today, Active workers, Pending orders, Revenue today
+- Live map showing all workers as colored dots (green=available, orange=busy, grey=offline)
+- All customers' live order locations on the same map
+
+### Orders Management Table
+- Columns: Order ID, Customer, Car, Package, Add-ons, Status, Worker Assigned, Date/Time, Total
+- Filter by: status, date, worker
+- Manually reassign worker to order via dropdown
+- Cancel order button
+
+### Worker Management
+- List of all workers with: name, status, current job, rating
+- Add new worker form
+
+### Customer Management
+- List of all customers: name, email, car details, order history
+
+---
+
+## DESIGN SYSTEM
+
+Colors:
+- Background: #F8F8F6 (warm off-white)
+- Cards: #FFFFFF with shadow: 0 2px 20px rgba(0,0,0,0.06)
+- Primary accent: #1A1A1A (near black)
+- Success/Active: #22C55E (green)
+- Warning: #F59E0B
+- Danger: #EF4444
+- Text primary: #111111
+- Text muted: #9CA3AF
+- Border: #F0F0F0
+
+Typography:
+- Font: Inter (Google Fonts)
+- Headings: font-weight 600–700
+- Body: font-weight 400
+- Captions: font-weight 300, muted color
+
+Components:
+- All cards: rounded-2xl, white bg, soft shadow
+- Buttons: rounded-full for primary CTAs, rounded-xl for secondary
+- Bottom navigation bar (4 icons): Home, Orders, Map, Profile
+- Status badges: pill-shaped with colored dot
+- Inputs: clean, minimal, bottom-border style or soft rounded with light bg
+- Animations: use Framer Motion for page transitions, card entrances (fadeInUp), button press feedback
+
+---
+
+## DATABASE SCHEMA (SQLite)
+
+Tables:
+- users (id, name, email, password_hash, role, avatar_url, created_at)
+- cars (id, user_id, brand, model, color, plate_number, car_type)
+- orders (id, customer_id, worker_id, car_id, package, addons_json, status, scheduled_date, scheduled_time, location_lat, location_lng, location_address, total_price, created_at)
+- workers (id, user_id, status, current_order_id, lat, lng)
+- packages (id, name, description, price, items_json)
+
+---
+
+## REAL-TIME FEATURES (Socket.IO)
+
+Events:
+- worker:location_update → customer tracking screen updates marker
+- order:status_change → customer gets toast notification
+- worker:job_assigned → worker gets new job notification
+
+---
+
+## SEED DATA
+Pre-populate with:
+- 3 demo customers with cars
+- 2 demo workers
+- 5 sample orders in various statuses
+- 3 packages with full descriptions
+
+---
+
+## FILE STRUCTURE
+/client (React app)
+  /src
+    /pages — CustomerHome, BookingWizard, TrackOrder, WorkerDashboard, AdminPanel, Login
+    /components — CarSimulator, MapView, PackageCard, OrderCard, StatusTimeline, BottomNav
+    /store — useAuthStore, useOrderStore
+    /utils — api.js, socket.js
+
+/server (Express)
+  /routes — auth, orders, workers, admin
+  /middleware — authMiddleware
+  /db — database.js, seed.js
+  server.js
+
+---
+
+Make sure every screen is fully functional with real data from the backend. The car simulator must be an interactive SVG with clickable zones. The map must show real markers. The worker tracking must animate. The booking wizard must save to the database. All role dashboards must show live data.
