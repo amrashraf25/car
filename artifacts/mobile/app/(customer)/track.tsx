@@ -255,6 +255,7 @@ export default function TrackScreen() {
       </View>
 
       <ScrollView
+        style={{ flex: 1 }}
         contentContainerStyle={s.scroll}
         showsVerticalScrollIndicator={false}
       >

@@ -85,7 +85,7 @@ export default function AdminWorkers() {
           <ActivityIndicator color={colors.primary} />
         </View>
       ) : (
-        <ScrollView contentContainerStyle={s.scroll} showsVerticalScrollIndicator={false}>
+        <ScrollView style={{ flex: 1 }} contentContainerStyle={s.scroll} showsVerticalScrollIndicator={false}>
           {(workers ?? []).length === 0 ? (
             <View style={s.empty}>
               <Feather name="users" size={48} color={colors.border} />

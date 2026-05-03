@@ -46,7 +46,7 @@ export default function WorkerProfile() {
 
   return (
     <View style={s.container}>
-      <ScrollView contentContainerStyle={s.scroll} showsVerticalScrollIndicator={false}>
+      <ScrollView style={{ flex: 1 }} contentContainerStyle={s.scroll} showsVerticalScrollIndicator={false}>
         <View style={s.hero}>
           <View style={s.avatar}>
             <Text style={s.avatarText}>{user?.name?.[0]?.toUpperCase() ?? "W"}</Text>

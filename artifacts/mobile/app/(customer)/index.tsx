@@ -190,6 +190,7 @@ export default function CustomerHome() {
   return (
     <View style={s.container}>
       <ScrollView
+        style={{ flex: 1 }}
         contentContainerStyle={s.scroll}
         showsVerticalScrollIndicator={false}
       >

@@ -160,7 +160,7 @@ export default function AdminOverview() {
         </Pressable>
       </View>
 
-      <ScrollView contentContainerStyle={s.scroll} showsVerticalScrollIndicator={false}>
+      <ScrollView style={{ flex: 1 }} contentContainerStyle={s.scroll} showsVerticalScrollIndicator={false}>
         {statsLoading ? (
           <View style={{ padding: 40, alignItems: "center" }}>
             <ActivityIndicator color={colors.primary} />

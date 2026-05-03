@@ -116,7 +116,7 @@ export default function ProfileScreen() {
 
   return (
     <View style={s.container}>
-      <ScrollView contentContainerStyle={s.scroll} showsVerticalScrollIndicator={false}>
+      <ScrollView style={{ flex: 1 }} contentContainerStyle={s.scroll} showsVerticalScrollIndicator={false}>
         <View style={s.heroSection}>
           <View style={s.avatarRing}>
             <Text style={s.avatarText}>

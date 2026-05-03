@@ -173,7 +173,7 @@ export default function CarsScreen() {
         </Pressable>
       </View>
 
-      <ScrollView contentContainerStyle={s.scroll} showsVerticalScrollIndicator={false}>
+      <ScrollView style={{ flex: 1 }} contentContainerStyle={s.scroll} showsVerticalScrollIndicator={false}>
         {(cars ?? []).length === 0 ? (
           <View style={s.empty}>
             <Feather name="truck" size={48} color={colors.border} />

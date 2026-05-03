@@ -225,6 +225,7 @@ export default function JobDetailScreen() {
       </View>
 
       <ScrollView
+        style={{ flex: 1 }}
         contentContainerStyle={s.scroll}
         showsVerticalScrollIndicator={false}
       >

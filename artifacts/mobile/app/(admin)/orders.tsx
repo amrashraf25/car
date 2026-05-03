@@ -120,7 +120,7 @@ export default function AdminOrders() {
           <ActivityIndicator color={colors.primary} />
         </View>
       ) : (
-        <ScrollView contentContainerStyle={s.scroll} showsVerticalScrollIndicator={false}>
+        <ScrollView style={{ flex: 1 }} contentContainerStyle={s.scroll} showsVerticalScrollIndicator={false}>
           {(orders ?? []).map((order) => {
             const sc = STATUS_COLORS[order.status] ?? { color: "#9CA3AF", bg: "#F3F4F6" };
             return (
